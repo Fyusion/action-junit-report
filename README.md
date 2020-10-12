@@ -64,3 +64,7 @@ test {
   }
 }
 ```
+
+## Tips for Gradle
+
+Forked from: https://github.com/ScaCap/action-surefire-report
