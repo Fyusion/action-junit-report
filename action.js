@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { Octokit } = require("@octokit/rest");
 const { parseTestReports } = require('./utils.js');
 
 const action = async () => {
@@ -40,7 +41,9 @@ const action = async () => {
 
     core.debug(JSON.stringify(createCheckRequest, null, 2));
 
-    const octokit = new github.GitHub(githubToken);
+    const octokit = new Octokit({
+        auth: githubToken,
+      });
     await octokit.checks.create(createCheckRequest);
 };
 
