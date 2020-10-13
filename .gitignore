@@ -68,9 +68,7 @@ typings/
 .classpath
 .project
 .settings/
-target/
 .idea
 *.iml
 junit.xml
-report.xml
 __pycache__

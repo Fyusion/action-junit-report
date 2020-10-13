@@ -43,7 +43,7 @@ const action = async () => {
 
     const octokit = new Octokit({
         auth: githubToken,
-      });
+    });
     await octokit.checks.create(createCheckRequest);
 };
 

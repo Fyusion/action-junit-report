@@ -162,4 +162,32 @@ describe('parseFile', () => {
             }
         ]);
     });
+
+    it('should parse marathon results', async () => {
+        const { count, skipped, annotations } = await parseFile('marathon_tests/com.fyusion.DummyTest#test_02_dummy.xml');
+
+        expect(count).toBe(1);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([]);
+    });
+
+    it('should parse and fail marathon results', async () => {
+        const { count, skipped, annotations } = await parseFile('marathon_tests/com.fyusion.DummyUtilTest#test_01_dummy.xml');
+
+        expect(count).toBe(1);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([
+            {
+                "annotation_level": "failure",
+                "end_column": 0,
+                "end_line": 1,
+                "message": "java.io.FileNotFoundException: No content provider: content://com.xyz/photo.jpg\nat android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1969)",
+                "path": "DummyUtilTest",
+                "raw_details": "java.io.FileNotFoundException: No content provider: content://com.xyz/photo.jpg\nat android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1969)\nat android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2205)",
+                "start_column": 0,
+                "start_line": 1,
+                "title": "DummyUtilTest.test_01_dummy",
+            },
+        ]);
+    });
 });
