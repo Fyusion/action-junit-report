@@ -1,6 +1,6 @@
-# GitHub Action: Process maven surefire reports
+# GitHub Action: Process junit reports
 
-This action processes maven surefire or failsafe XML reports on pull requests and shows the result as a PR check with summary and annotations.
+This action processes junit XML reports on pull requests and shows the result as a PR check with summary and annotations.
 
 ![Screenshot](./screenshot.png)
 
@@ -12,7 +12,7 @@ This action processes maven surefire or failsafe XML reports on pull requests an
 
 ### `report_paths`
 
-Optional. [Glob](https://github.com/actions/toolkit/tree/master/packages/glob) expression to surefire or failsafe report paths. The default is `**/surefire-reports/TEST-*.xml`.
+Optional. [Glob](https://github.com/actions/toolkit/tree/master/packages/glob) expression to junit report paths. The default is `**/junit-reports/TEST-*.xml`.
 
 ### `check_name`
 
@@ -39,7 +39,7 @@ jobs:
       - name: Build and Run Tests
         run: mvn test --batch-mode -Dmaven.test.failure.ignore=true
       - name: Publish Test Report
-        uses: scacap/action-surefire-report@v1
+        uses: Fyusion/action-junit-report@{specific-sha1}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -62,6 +62,6 @@ test {
 }
 ```
 
-## Tips for Gradle
+## Note
 
 Forked from: https://github.com/ScaCap/action-surefire-report

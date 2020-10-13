@@ -190,4 +190,12 @@ describe('parseFile', () => {
             },
         ]);
     });
+
+    it('should parse empty cunit results', async () => {
+        const { count, skipped, annotations } = await parseFile('cunit/testEmpty.xml');
+
+        expect(count).toBe(0);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([]);
+    });
 });

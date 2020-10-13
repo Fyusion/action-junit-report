@@ -10540,6 +10540,10 @@ async function parseFile(file) {
             : [report.testsuites.testsuite];
 
     for (const testsuite of testsuites) {
+        if(!testsuite || !testsuite.testcase) {
+            return { count, skipped, annotations };
+        }
+
         const testcases = Array.isArray(testsuite.testcase)
             ? testsuite.testcase
             : testsuite.testcase
