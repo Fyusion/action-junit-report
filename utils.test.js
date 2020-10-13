@@ -198,4 +198,24 @@ describe('parseFile', () => {
         expect(skipped).toBe(0);
         expect(annotations).toStrictEqual([]);
     });
+
+    it('should parse failure cunit results', async () => {
+        const { count, skipped, annotations } = await parseFile('cunit/testFailure.xml');
+
+        expect(count).toBe(4);
+        expect(skipped).toBe(0);
+        expect(annotations).toStrictEqual([
+            {
+                "annotation_level": "failure",
+                "end_column": 0,
+                "end_line": 1,
+                "message": "false == something.loadXml(xml_string)",
+                "path": "loadFromXMLString_When_Should2Test",
+                "raw_details": "false == something.loadXml(xml_string)\nFile: /dumm/core/tests/testFailure.cpp\nLine: 77",
+                "start_column": 0,
+                "start_line": 1,
+                "title": "loadFromXMLString_When_Should2Test.loadFromXMLString_When_Should2Test",
+            },
+        ]);
+    });
 });

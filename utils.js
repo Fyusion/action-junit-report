@@ -75,7 +75,7 @@ async function parseFile(file) {
 
                 const { filename, line } = resolveFileAndLine(
                     testcase._attributes.file,
-                    testcase._attributes.classname,
+                    testcase._attributes.classname ? testcase._attributes.classname : testcase._attributes.name,
                     stackTrace
                 );
 
