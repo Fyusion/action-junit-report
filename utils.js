@@ -61,8 +61,8 @@ async function parseFile(file) {
                 ).trim();
 
                 const message = (
-                    (testcase.failure && testcase.failure._attributes.message) ||
-                    (testcase.error && testcase.error._attributes.message) ||
+                    (testcase.failure && testcase.failure._attributes && testcase.failure._attributes.message) ||
+                    (testcase.error && testcase.error._attributes && testcase.error._attributes.message) ||
                     stackTrace.split('\n').slice(0, 2).join('\n')
                 ).trim();
 
