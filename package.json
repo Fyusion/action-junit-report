@@ -38,7 +38,7 @@
     "xml-js": "1.6.11"
   },
   "devDependencies": {
-    "@octokit/fixtures": "21.3.0",
+    "@octokit/fixtures": "21.3.1",
     "@zeit/ncc": "0.22.3",
     "enzyme": "3.11.0",
     "eslint": "^7.16.0",
