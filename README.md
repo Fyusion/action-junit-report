@@ -1,3 +1,9 @@
+## Deprecated
+
+- Repo was deprecated and moved over to: https://github.com/mikepenz/action-junit-report
+
+-------
+
 <div align="center">
   :octocat:
 </div>
